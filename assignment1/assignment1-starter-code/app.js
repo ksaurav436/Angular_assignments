@@ -10,6 +10,9 @@ function LunchCheckController($scope) {
 	$scope.message = "Go ahead"
 
 	$scope.Check = function(){
+		if ($scope.foods == undefined){
+			$scope.message = "Please enter data first"
+		}
 		var arr = $scope.foods.split(",")
 
 		var count = 0
@@ -17,9 +20,6 @@ function LunchCheckController($scope) {
 			if (arr[i] != ""){
 				count += 1
 			}
-		}
-		if (count == 0) {
-			$scope.message = "Please enter data first"
 		}
 
 		if (count <= 3) {
