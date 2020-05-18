@@ -18,6 +18,10 @@ function LunchCheckController($scope) {
 				count += 1
 			}
 		}
+		if (count == 0) {
+			$scope.message = "Please enter data first"
+		}
+
 		if (count <= 3) {
 			$scope.message = "Enjoy!"
 		}
