@@ -22,7 +22,8 @@ function ToBuyController(ShoppingListCheckOffService) {
 			to_buy_1.error = "Please enter item to add!"
 		} 
 		else {
-		ShoppingListCheckOffService.addIt(to_buy_1.item_name,to_buy_1.item_quantity);
+			to_buy_1.error = undefined
+			ShoppingListCheckOffService.addIt(to_buy_1.item_name,to_buy_1.item_quantity);
 		}
 	}
 	to_buy_1.cleartobuylist = function(){
