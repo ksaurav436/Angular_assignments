@@ -38,11 +38,15 @@
         <input type="text" ng-model="tobuy.item_quantity" placeholder="quantity">
         <button class="btn btn-default" ng-click="tobuy.add();">Add Item</button>
       </div>
+      <div class="emptyMessage" ng-if="tobuy.error">
+        {{ tobuy.error }}
+      </div>
      <h2>To Buy:</h2>
      <ul>
        <li ng-repeat="item in tobuy.list">Buy {{ item.quantity }} {{ item.name }} <button class="btn btn-default" ng-click="tobuy.b($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      </ul>
      <div class="emptyMessage" ng-if="tobuy.list.length == 0">Everything is bought!</div>
+     <button ng-click="tobuy.cleartobuylist()" ng-if="tobuy.list.length > 0" class="btn btn-default">Clear list</button>
     </div>
 
     <!-- Already Bought List -->
@@ -53,7 +57,7 @@
      </ul>
      <div class="emptyMessage" ng-if="bought.list.length == 0">Nothing bought yet.</div>
      <div>
-       <button ng-click="bought.clearlist()" ng-if="bought.list.length > 0" class="btn btn-default">Clear list</button>
+       <button ng-click="bought.clearboughtlist()" ng-if="bought.list.length > 0" class="btn btn-default">Clear list</button>
      </div>
     </div>
   </div>

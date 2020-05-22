@@ -18,7 +18,15 @@ function ToBuyController(ShoppingListCheckOffService) {
 		ShoppingListCheckOffService.checkoff(index)
 	}
 	to_buy_1.add = function(){
+		if (to_buy_1.item_name === "") {
+			to_buy_1.error = "Please enter item to add!"
+		} 
+		else {
 		ShoppingListCheckOffService.addIt(to_buy_1.item_name,to_buy_1.item_quantity);
+		}
+	}
+	to_buy_1.cleartobuylist = function(){
+		ShoppingListCheckOffService.clearittobuy();
 	}
 }
 
@@ -28,8 +36,8 @@ function AlreadyBoughtController(ShoppingListCheckOffService) {
 	var bought_1 = this
 
 	bought_1.list = ShoppingListCheckOffService.get_bought()
-	bought_1.clearlist = function(){
-		ShoppingListCheckOffService.clearit();
+	bought_1.clearboughtlist = function(){
+		ShoppingListCheckOffService.clearitbought();
 	}
 	bought_1.missclick = function(index){
 		ShoppingListCheckOffService.missclick(index)
@@ -84,13 +92,17 @@ function ShoppingListCheckOffService() {
 		})
 	}
 
-	service.clearit = function(){
+	service.clearitbought = function(){
 		bought_list.splice(0,bought_list.length)
 	}
 
 	service.missclick = function(index){
 		buy_list.push(bought_list[index]);
 		bought_list.splice(index,1);
+	}
+
+	service.clearittobuy = function(){
+		buy_list.splice(0,buy_list.length)
 	}
 }
 })();
