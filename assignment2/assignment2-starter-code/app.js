@@ -31,6 +31,9 @@ function AlreadyBoughtController(ShoppingListCheckOffService) {
 	bought_1.clearlist = function(){
 		ShoppingListCheckOffService.clearit();
 	}
+	bought_1.missclick = function(index){
+		ShoppingListCheckOffService.missclick(index)
+	}
 }
 
 
@@ -83,6 +86,11 @@ function ShoppingListCheckOffService() {
 
 	service.clearit = function(){
 		bought_list.splice(0,bought_list.length)
+	}
+
+	service.missclick = function(index){
+		buy_list.push(bought_list[index]);
+		bought_list.splice(index,1);
 	}
 }
 })();
