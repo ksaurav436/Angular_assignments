@@ -28,6 +28,9 @@ function AlreadyBoughtController(ShoppingListCheckOffService) {
 	var bought_1 = this
 
 	bought_1.list = ShoppingListCheckOffService.get_bought()
+	bought_1.clearlist = function(){
+		ShoppingListCheckOffService.clearit();
+	}
 }
 
 
@@ -76,6 +79,10 @@ function ShoppingListCheckOffService() {
 			name:newname,
 			quantity:newquantity
 		})
+	}
+
+	service.clearit = function(){
+		bought_list.splice(0,bought_list.length)
 	}
 }
 })();

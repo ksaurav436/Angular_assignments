@@ -36,7 +36,7 @@
       <div>
         <input type="text" ng-model="tobuy.item_name" placeholder="Item name">
         <input type="text" ng-model="tobuy.item_quantity" placeholder="quantity">
-        <button ng-click="tobuy.add();">Add Item</button>
+        <button class="btn btn-default" ng-click="tobuy.add();">Add Item</button>
       </div>
      <h2>To Buy:</h2>
      <ul>
@@ -52,6 +52,9 @@
        <li ng-repeat="item in bought.list">Bought {{ item.quantity }} {{ item.name }} </li>
      </ul>
      <div class="emptyMessage" ng-if="bought.list.length == 0">Nothing bought yet.</div>
+     <div>
+       <button ng-click="bought.clearlist()" ng-if="bought.list.length > 0" class="btn btn-default">Clear list</button>
+     </div>
     </div>
   </div>
 </div>
