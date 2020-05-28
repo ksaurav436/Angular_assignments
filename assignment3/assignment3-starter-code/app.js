@@ -7,8 +7,8 @@ angular.module('NarrowItDownApp', [])
 .service('MenuSearchService',MenuSearchService)
 .directive('foundItems', FoundItemsDirective);
 
-NarrowItDownController.$inject = ['MenuSearchService','$scope'];
-function NarrowItDownController(MenuSearchService,$scope) {
+NarrowItDownController.$inject = ['MenuSearchService'];
+function NarrowItDownController(MenuSearchService) {
 	var ctrl = this;
 
 	ctrl.searchTerm = ""
@@ -45,6 +45,9 @@ function MenuSearchService($http) {
 				}
 			}
 			return foundItems
+		})
+		.catch(function(error){
+			console.log(error)
 		})
 	};
 };

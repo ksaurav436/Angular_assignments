@@ -1,12 +1,16 @@
-<div>
-      <ol>
-        <li ng-repeat="item in foundItem">
-          <ul>
+<div class="row">
+          <div class="container" ng-repeat="item in foundItem">
+            <ul class="row">
+            <div class="col-sm-8">
             <li>name: {{ item.name }}</li>
             <li>short_name: {{ item.short_name }}</li>
             <li>desc: {{ item.description }}</li>
-            <button class="btn btn-primary" ng-click="onRemove({index: $index})">Don't want this one!</button>
-          </ul>
-        </li>
-      </ol>
+            </div>
+            <button class="btn btn-primary col-sm-4 order-sm-last" ng-click="onRemove({index: $index})">Don't want this one!</button>
+            </ul>
+            
+          </div>
+          <div ng-if="foundItem.length == 0">
+              Nothing Found
+          </div>
 </div>
